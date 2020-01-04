@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn btn-primary">click here</button>
+    <table class="table-bordered table-responsive">
+      <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>company</th>
+        <th>role</th>
+      </tr>
+      <tr *ngFor="let de of details">
+        <td>{{ de.name | uppercase }}</td>
+        <td>{{ de.age }}</td>
+        <td>{{ de.company }}</td>
+        <td>{{ de.role }}</td>
+      </tr>
+    </table>
+  </body>
+</html>
