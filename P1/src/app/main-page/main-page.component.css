@@ -1,0 +1,112 @@
+/*#bodybg{
+  
+  min-height: 100vh;
+  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+  
+}*/
+.navbar-light{
+  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 10px;
+  
+}
+#CustomerMatDataTable {
+  width: 100%;
+  
+}
+#CustomerDataTable{
+  display: none;
+}
+#matHeader{
+  background-color: brown;
+}
+#matrow{
+  background-color: cornflowerblue;
+}
+.navButtons{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  outline: none;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  
+  cursor: pointer;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+.card-body{
+  background: teal;
+  width: 113%;
+  margin-left: -15px;
+}
+.border{
+  border-style: ridge;
+  border-width: 10px;
+  width: 112%;
+  margin-left:-12px;
+  margin-top: 5px;
+}
+#cardbuttons{
+  width: 90%;
+  
+  font-size: 12px;
+  font-family: sans-serif;
+  background-color: teal;
+  
+}
+
+
+
+li:hover{
+  background-color: wheat;
+}
+.details{
+  margin-left: 10px;
+}
+.navbar:hover {
+  background-color: white;
+}
+.form-control {
+  width: 60%;
+}
+.login{
+  width: 400px;
+}
+.modal-body{
+  left: 40px;
+}
+.signup{
+  width: 500px;
+}
+  .nav-item{
+    margin-right: 20px;
+  }
+@media (max-width: 1000px) {
+  /*shows elements in a column*/
+  ul{
+    flex-direction: column;
+  }
+  #search{
+    width: 200px;
+  }
+  
+.navbar-default{
+  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+}
+  
+  /* deletes margin on top or bottom of the a tag*/
+  li{
+    margin: 0;
+  }
+ /* makes sure that the a tag will take the entire screen*/
+  a{
+    display: block;
+  }
+}

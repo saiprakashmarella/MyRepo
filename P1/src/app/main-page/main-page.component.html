@@ -4,23 +4,247 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Document</title>
   </head>
   <body>
-    <button class="btn btn-primary">click here</button>
-    <table class="table-bordered table-responsive">
-      <tr>
-        <th>name</th>
-        <th>age</th>
-        <th>company</th>
-        <th>role</th>
-      </tr>
-      <tr *ngFor="let de of details">
-        <td>{{ de.name | uppercase }}</td>
-        <td>{{ de.age }}</td>
-        <td>{{ de.company }}</td>
-        <td>{{ de.role }}</td>
-      </tr>
-    </table>
+    <div id="bodybg">
+    <div class="header">
+      <nav class="navbar navbar-expand-md bg-light navbar-light">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"><span>
+          <i class="fa fa-user"></i>
+        </span></a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link " href="#">Customer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li id="signupButton" class="nav-item">
+              <a
+                type="button"
+                data-toggle="modal"
+                data-target="#SignUpModal"
+                href="#"
+                class="nav-link"
+                ><span class="glyphicon glyphicon-user"></span> SingUp
+              </a>
+            </li>
+            <li id="loginButton" class="nav-item navbar-right">
+              <a
+                id="login"
+                type="button"
+                data-toggle="modal"
+                data-target="#LoginModal"
+                class="nav-link"
+                href="#"
+              >
+                <span class="glyphicon glyphicon-log-in"></span> Login
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div id="LoginModal" class="modal fade" role="dialog">
+      
+        <div class="modal-dialog login">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Login</h4>
+              <button
+                id="modalclose"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <div class="row">
+                  <label class="control-label col-xs-4 col-sm-4 col-md-4" for="email">Email:</label>
+                  <div class="col-xs-8 col-sm-8 col-md-8">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter email"
+                    />
+                  </div>
+                </div>
+              </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="control-label col-xs-4 col-sm-4 col-md-4" for="pwd"
+                      >Password:</label
+                    >
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="pwd"
+                        placeholder="Enter password"  
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                    </div>
+                  <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="checkbox" id="Loginbuttons">
+                      <label><input type="checkbox" /> Remember me</label>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      
+    
+    </div>
+    <div id="SignUpModal" class="modal fade" role="dialog">
+      <div class="modal-dialog signup" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+            <h4 class="modal-title">SingUp</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                hi
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                Hello
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <br>
+      <div class="row" style="margin-left: 40px;">
+        <button  id="TopCustomerButton" (click)="ShowTopCustomers()" role="button" class="navbar-brand navButtons " style="color: teal"><span><i class="fa fa-user-circle" style="width: 30px;"></i></span>Top Customers</button>
+        <button  id="AllCustomerButton" (click)="ShowAllCustomers()" type="button" class="navbar-brand navButtons" style="color: black;"><span><i class="fa fa-users " style="width: 30px;"></i></span>All Customers</button>
+      </div>
+      <br>
+      <div class="row" id="TopCustomerCards">
+      <div *ngFor="let det of details">
+      <div class="card col" style="width:270px;margin-left: 45px;height: 350px;">
+        <img class="card-img-top" style="width: 40%; margin-left: 60px;margin-top: 5px;" src="../../assets/Images/customer_male.png" alt="Card image">
+        <div class="border"></div>
+        <div class="card-body">
+          <h4 class="card-title" style="margin-left:10px;">{{det.Name}}</h4>
+          <div class="row details">
+            <label>Age :</label>
+            <p>{{det.Age}}</p>
+          </div>
+          <div class="row details">
+            <label>Country :</label>
+            <p>{{det.Country}}</p>
+          </div>
+          <div class="row details">
+            <label>Total Orders: </label>
+            <p>{{det.TotalOrders}}</p>
+          </div>
+          <div class="row">
+            <div class="col">
+          <a href="#" id="cardbuttons" style="margin-left:-15px;" class="btn btn-primary stretched-link">Profile</a>
+        </div>
+        <div class="col">
+          <a href="#" id="cardbuttons" style="margin-left: 20px;" class="btn btn-primary">Orders</a>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="CustomerDataTable">
+    
+      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
+    
+  <table id="CustomerMatDataTable" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let details"> {{details.Name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+      <td mat-cell *matCellDef="let details"> {{details.Age}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+      <td mat-cell *matCellDef="let details"> {{details.Country}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="TotalOrders">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> TotalOrders </th>
+      <td mat-cell *matCellDef="let details"> {{details.TotalOrders}} </td>
+    </ng-container>
+  
+    <tr mat-header-row id="matHeader" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row id="matrow" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+</div>
+  </div>
+    
   </body>
 </html>
