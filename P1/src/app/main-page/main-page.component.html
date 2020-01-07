@@ -175,9 +175,9 @@
         <button  id="AllCustomerButton" (click)="ShowAllCustomers()" type="button" class="navbar-brand navButtons" style="color: black;"><span><i class="fa fa-users " style="width: 30px;"></i></span>All Customers</button>
       </div>
       <br>
-      <div class="row" id="TopCustomerCards">
-      <div *ngFor="let det of details">
-      <div class="card col" style="width:270px;margin-left: 45px;height: 350px;">
+      <div class="row" id="TopCustomerCards" style="margin-left: 60px;">
+      <div *ngFor="let det of TopCustomerDetails">
+      <div class="card col" style="width:300px;margin-left: 60px;height: 350px; margin-bottom: 20px;">
         <img class="card-img-top" style="width: 40%; margin-left: 60px;margin-top: 5px;" src="../../assets/Images/customer_male.png" alt="Card image">
         <div class="border"></div>
         <div class="card-body">
@@ -206,10 +206,20 @@
       </div>
     </div>
   </div>
-  <div id="CustomerDataTable">
-    
+  <div>
+    <div id="previousButton">
+      <div>
+  <button id="previousCustomersDetails" class="navbar-brand navButtons text-center"  (click)="previousCustomersDetails()"><span><i class="fa fa-caret-left" style="width: 30px;"></i></span>Prev</button>
+  <p id="pageIndicator" style="margin-left: 15px;">{{pageNo+1}}</p>
+  <button  id="nextCustomersDetails" class="navbar-brand navButtons text-center" (click)="nextCustomersDetails()" role="button" style="margin-left: 25px;">Next<span><i class="fa fa-caret-right" style="width: 30px;"></i></span ></button>
+</div>
+</div>
+
+</div>
+  <div class="container-fluid" id="CustomerDataTable">
+    <div>
       <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
-    
+    </div>
   <table id="CustomerMatDataTable" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <!-- Position Column -->
