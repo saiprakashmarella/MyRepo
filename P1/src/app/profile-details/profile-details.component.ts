@@ -1,11 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {} from "googlemaps";
-declare var ol: any;
-import olMap from "ol/Map";
-import TileLayer from "ol/layer/Tile";
-import View from "ol/View";
-import OSM from "ol/source/OSM.js";
-import XYZ from "ol/source/XYZ";
 
 @Component({
   selector: "app-profile-details",
