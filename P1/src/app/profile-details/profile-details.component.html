@@ -71,25 +71,39 @@
     <br />
     <div class="container-fluid">
       <div id="tabButtons">
-        <button id="navButtons" class="navbar-brand" style="color: wheat;">
+        <button
+          id="CustProfile"
+          (click)="ProfileTab()"
+          class="navbar-brand navButtons"
+          style="color: wheat;"
+        >
           <span><i class="fa fa-user" style="width: 30px;"></i></span>Customer
           Profile
         </button>
-        <button id="navButtons" class="navbar-brand">
+        <button
+          id="CustOrders"
+          (click)="OrdersTab()"
+          class="navbar-brand navButtons"
+        >
           <span><i class="fa fa-shopping-cart" style="width: 30px;"></i></span
           >Customer Orders
         </button>
-        <button id="navButtons" class="navbar-brand">
+        <button
+          id="EditCust"
+          (click)="EditTab()"
+          class="navbar-brand navButtons"
+        >
           <span><i class="fa fa-edit" style="width: 30px;"></i></span>Edit
           Customer
         </button>
       </div>
       <br />
       <br />
-      <div class="row">
+      <div id="CustomerProfileTab" class="row">
         <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
           <img
-            src="../../assets/Images/customerProfilePhoto_Male.png"
+            id="userImg"
+            src="{{ imgSrc }}"
             alt="CustomerImage"
             width="55%"
             height="55%"
@@ -100,15 +114,140 @@
           <div class="row">
             <strong>Marella Sai</strong>
           </div>
+          <br />
           <div class="row">
             <p>23 <br />India</p>
           </div>
         </div>
       </div>
-      <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+      <agm-map
+        id="mapLocation"
+        [latitude]="lat"
+        [zoom]="zoom"
+        [longitude]="lng"
+      >
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       </agm-map>
-      
+
+      <div id="EditTab" class="row container-fluid" style="display: none;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-4">
+          <div class="row" style="margin-left: 40px;">
+            <img
+              id="userEditImg"
+              src="{{ imgSrc }}"
+              alt="customerPic"
+              width="40%"
+              height="40%"
+            />
+          </div>
+          <div class="row">
+            <br />
+          </div>
+          <div class="row" style="margin-left: 100px;">
+            <input
+              style="display: none"
+              type="file"
+              (change)="onImgChanged($event)"
+              accept="image/*"
+              #fileInput
+            />
+            <button
+              class="navButtons"
+              style="margin-left: -60px;margin-right: 40px;"
+              (click)="fileInput.click()"
+            >
+              <span><i class="fa fa-upload" width="20px;"></i></span> Choose
+              photo
+            </button>
+
+            <button
+              class="navButtons"
+              style="margin-right: 40px;"
+              (click)="fileInput.click()"
+            >
+              <span><i class="fa fa-upload" width="30px;"></i></span> Upload
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 col-md-6 col-xs-8">
+          <div class="row">
+            <strong>Sai Marella</strong>
+          </div>
+          <br />
+          <div class="row">
+            <form
+              #editDetails="ngForm"
+              (ngSubmit)="UpdateDetails(editDetails.value)"
+              class="form"
+            >
+              <div class="form-group row">
+                <div class="col-6">
+                  <label for="email">Email address:</label>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email"
+                    name="email"
+                    ngModel
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-6">
+                  <label for="email">Age:</label>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="Country"
+                    class="form-control"
+                    placeholder="Enter Age"
+                    name="Age"
+                    ngModel
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-6">
+                  <label for="email">Country:</label>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="Country"
+                    class="form-control"
+                    placeholder="Enter country"
+                    name="Country"
+                    ngModel
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-6">
+                  <label for="email">State:</label>
+                </div>
+                <div class="col-6">
+                  <input
+                    type="Country"
+                    class="form-control"
+                    placeholder="Enter State"
+                    name="State"
+                    ngModel
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="OrderTab" style="display: none;">
+        <P>Orders Sections</P>
+      </div>
     </div>
   </body>
 </html>

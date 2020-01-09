@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainPageComponent } from "./main-page/main-page.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {
+import { 
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
@@ -13,6 +13,7 @@ import {
 } from "@angular/material";
 import { ProfileDetailsComponent } from "./profile-details/profile-details.component";
 import { AgmCoreModule } from "@agm/core";
+import {FormsModule} from '@angular/forms'
 @NgModule({
   declarations: [AppComponent, MainPageComponent, ProfileDetailsComponent],
   imports: [
@@ -23,6 +24,7 @@ import { AgmCoreModule } from "@agm/core";
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCWedEqCJBj8uf8ZHzD6z8a7B3vsXwc9XI"
     })
