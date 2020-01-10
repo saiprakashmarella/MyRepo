@@ -1,6 +1,7 @@
 .navbar-light {
   background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
 }
+
 .navButtons {
   background: none !important;
   border: none;
@@ -14,10 +15,20 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
 agm-map {
   height: 230px;
   margin-bottom: 80px;
 }
+
 #userEditImg {
   border-radius: 50%;
+}
+
+.navbar:hover {
+  background-color: white;
+}
+
+.nav-item {
+  margin-right: 20px;
 }

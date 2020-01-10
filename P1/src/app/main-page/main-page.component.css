@@ -4,122 +4,148 @@
   background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
   
 }*/
-.navbar-light{
+.navbar-light {
   background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
 }
-.card{
+
+.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 10px;
-  
+
 }
+
 #CustomerMatDataTable {
   width: 100%;
   max-height: 100px;
-  
+
 }
-#CustomerDataTable{
+
+#CustomerDataTable {
   display: none;
 }
-#matHeader{
+
+#matHeader {
   background-color: brown;
 }
-#matrow{
+
+#matrow {
   background-color: cornflowerblue;
 }
-#previousButton{
+
+#previousButton {
   text-align: center;
-  
+
 }
-#pageIndicator{
+
+#pageIndicator {
   border-style: solid;
   display: inline;
   padding-left: 20px;
   padding-right: 20px;
   border-color: burlywood;
-  
+
 }
-.navButtons{
-  background: none!important;
+
+.navButtons {
+  background: none !important;
   border: none;
-  padding: 0!important;
+  padding: 0 !important;
   outline: none;
   /*optional*/
   font-family: arial, sans-serif;
   /*input has OS specific font-family*/
   color: #069;
-  
+
   cursor: pointer;
 }
 
 th.mat-sort-header-sorted {
   color: black;
 }
-.card-body{
+
+.card-body {
   background: teal;
   width: 111%;
   margin-left: -15px;
 }
-.border{
+
+.border {
   border-style: ridge;
   border-width: 10px;
   width: 112%;
-  margin-left:-12px;
+  margin-left: -12px;
   margin-top: 5px;
 }
-#cardbuttons{
+
+#cardbuttons {
   width: 90%;
-  
+
   font-size: 12px;
   font-family: sans-serif;
   background-color: teal;
-  
+
 }
 
 
 
-li:hover{
+li:hover {
   background-color: wheat;
 }
-.details{
+
+.details {
   margin-left: 10px;
 }
+
 .navbar:hover {
   background-color: white;
 }
+
 .form-control {
   width: 60%;
 }
-.login{
+
+.login {
   width: 400px;
 }
-.modal-body{
+
+.modal-body {
   left: 40px;
 }
-.signup{
+
+.signup {
   width: 500px;
 }
-  .nav-item{
-    margin-right: 20px;
-  }
+
+.nav-item {
+  margin-right: 20px;
+}
+
+#searchTable {
+  width: 50%;
+}
+
 @media (max-width: 1000px) {
+
   /*shows elements in a column*/
-  ul{
+  ul {
     flex-direction: column;
   }
-  #search{
+
+  #search {
     width: 200px;
   }
-  
-.navbar-default{
-  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
-}
-  
+
+  .navbar-default {
+    background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+  }
+
   /* deletes margin on top or bottom of the a tag*/
-  li{
+  li {
     margin: 0;
   }
- /* makes sure that the a tag will take the entire screen*/
-  a{
+
+  /* makes sure that the a tag will take the entire screen*/
+  a {
     display: block;
   }
 }

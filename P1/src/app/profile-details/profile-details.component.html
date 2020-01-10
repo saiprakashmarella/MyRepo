@@ -1,253 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Profile</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div class="header">
-      <nav class="navbar navbar-expand-md bg-light navbar-light">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#"
-          ><span> <i class="fa fa-user"></i> </span
-        ></a>
 
-        <!-- Toggler/collapsibe Button -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link " href="#">Customer</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Orders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="signupButton" class="nav-item">
-              <a
-                type="button"
-                data-toggle="modal"
-                data-target="#SignUpModal"
-                href="#"
-                class="nav-link"
-                ><span class="glyphicon glyphicon-user"></span> SingUp
-              </a>
-            </li>
-            <li id="loginButton" class="nav-item navbar-right">
-              <a
-                id="login"
-                type="button"
-                data-toggle="modal"
-                data-target="#LoginModal"
-                class="nav-link"
-                href="#"
-              >
-                <span class="glyphicon glyphicon-log-in"></span> Login
-              </a>
-            </li>
-          </ul>
+<body>
+  <div class="header">
+    <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#"><span> <i class="fa fa-user"></i> </span></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link " href (click)="!!profileNavigate()">Customer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href (click)="!!chartsNavigate()">Statistics</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li id="signupButton" class="nav-item">
+            <a type="button" data-toggle="modal" data-target="#SignUpModal" href="#" class="nav-link"><span
+                class="glyphicon glyphicon-user"></span> SingUp
+            </a>
+          </li>
+          <li id="loginButton" class="nav-item navbar-right">
+            <a id="login" type="button" data-toggle="modal" data-target="#LoginModal" class="nav-link" href="#">
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <br />
+  <div id="LoginModal" class="modal fade" role="dialog">
+
+    <div class="modal-dialog login">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title">Login</h4>
+          <button id="modalclose" type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
         </div>
-      </nav>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <div class="row">
+                <label class="control-label col-xs-4 col-sm-4 col-md-4" for="email">Email:</label>
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <label class="control-label col-xs-4 col-sm-4 col-md-4" for="pwd">Password:</label>
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                  <div class="checkbox" id="Loginbuttons">
+                    <label><input type="checkbox" /> Remember me</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div id="SignUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog signup">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+          <h4 class="modal-title">SingUp</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+              hi
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+              Hello
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div id="tabButtons">
+      <button id="CustProfile" (click)="ProfileTab()" class="navbar-brand navButtons" style="color: wheat;">
+        <span><i class="fa fa-user" style="width: 30px;"></i></span>Customer
+        Profile
+      </button>
+      <button id="CustOrders" (click)="OrdersTab()" class="navbar-brand navButtons">
+        <span><i class="fa fa-shopping-cart" style="width: 30px;"></i></span>Customer Orders
+      </button>
+      <button id="EditCust" (click)="EditTab()" class="navbar-brand navButtons">
+        <span><i class="fa fa-edit" style="width: 30px;"></i></span>Edit
+        Customer
+      </button>
     </div>
     <br />
-    <div class="container-fluid">
-      <div id="tabButtons">
-        <button
-          id="CustProfile"
-          (click)="ProfileTab()"
-          class="navbar-brand navButtons"
-          style="color: wheat;"
-        >
-          <span><i class="fa fa-user" style="width: 30px;"></i></span>Customer
-          Profile
-        </button>
-        <button
-          id="CustOrders"
-          (click)="OrdersTab()"
-          class="navbar-brand navButtons"
-        >
-          <span><i class="fa fa-shopping-cart" style="width: 30px;"></i></span
-          >Customer Orders
-        </button>
-        <button
-          id="EditCust"
-          (click)="EditTab()"
-          class="navbar-brand navButtons"
-        >
-          <span><i class="fa fa-edit" style="width: 30px;"></i></span>Edit
-          Customer
-        </button>
+    <br />
+    <div id="CustomerProfileTab" class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+        <img id="userImg" src="{{ imgSrc }}" alt="CustomerImage" width="55%" height="55%" />
       </div>
-      <br />
-      <br />
-      <div id="CustomerProfileTab" class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
-          <img
-            id="userImg"
-            src="{{ imgSrc }}"
-            alt="CustomerImage"
-            width="55%"
-            height="55%"
-          />
+      <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
+        <br />
+        <div class="row">
+          <strong>{{profileName}}</strong>
         </div>
-        <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
-          <br />
-          <div class="row">
-            <strong>Marella Sai</strong>
-          </div>
-          <br />
-          <div class="row">
-            <p>23 <br />India</p>
-          </div>
+        <br />
+        <div class="row">
+          <p>{{profileAge}} <br />{{profileCountry}}</p>
         </div>
-      </div>
-      <agm-map
-        id="mapLocation"
-        [latitude]="lat"
-        [zoom]="zoom"
-        [longitude]="lng"
-      >
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-      </agm-map>
-
-      <div id="EditTab" class="row container-fluid" style="display: none;">
-        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-4">
-          <div class="row" style="margin-left: 40px;">
-            <img
-              id="userEditImg"
-              src="{{ imgSrc }}"
-              alt="customerPic"
-              width="40%"
-              height="40%"
-            />
-          </div>
-          <div class="row">
-            <br />
-          </div>
-          <div class="row" style="margin-left: 100px;">
-            <input
-              style="display: none"
-              type="file"
-              (change)="onImgChanged($event)"
-              accept="image/*"
-              #fileInput
-            />
-            <button
-              class="navButtons"
-              style="margin-left: -60px;margin-right: 40px;"
-              (click)="fileInput.click()"
-            >
-              <span><i class="fa fa-upload" width="20px;"></i></span> Choose
-              photo
-            </button>
-
-            <button
-              class="navButtons"
-              style="margin-right: 40px;"
-              (click)="fileInput.click()"
-            >
-              <span><i class="fa fa-upload" width="30px;"></i></span> Upload
-            </button>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-6 col-md-6 col-xs-8">
-          <div class="row">
-            <strong>Sai Marella</strong>
-          </div>
-          <br />
-          <div class="row">
-            <form
-              #editDetails="ngForm"
-              (ngSubmit)="UpdateDetails(editDetails.value)"
-              class="form"
-            >
-              <div class="form-group row">
-                <div class="col-6">
-                  <label for="email">Email address:</label>
-                </div>
-                <div class="col-6">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Enter email"
-                    name="email"
-                    ngModel
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-6">
-                  <label for="email">Age:</label>
-                </div>
-                <div class="col-6">
-                  <input
-                    type="Country"
-                    class="form-control"
-                    placeholder="Enter Age"
-                    name="Age"
-                    ngModel
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-6">
-                  <label for="email">Country:</label>
-                </div>
-                <div class="col-6">
-                  <input
-                    type="Country"
-                    class="form-control"
-                    placeholder="Enter country"
-                    name="Country"
-                    ngModel
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-6">
-                  <label for="email">State:</label>
-                </div>
-                <div class="col-6">
-                  <input
-                    type="Country"
-                    class="form-control"
-                    placeholder="Enter State"
-                    name="State"
-                    ngModel
-                  />
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div id="OrderTab" style="display: none;">
-        <P>Orders Sections</P>
       </div>
     </div>
-  </body>
+    <agm-map id="mapLocation" [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+
+    <div id="EditTab" class="row container-fluid" style="display: none;">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xs-4">
+        <div class="row" style="margin-left: 40px;">
+          <img id="userEditImg" src="{{ imgSrc }}" alt="customerPic" width="40%" height="40%" />
+        </div>
+        <div class="row">
+          <br />
+        </div>
+        <div class="row" style="margin-left: 100px;">
+          <input style="display: none" type="file" (change)="onImgChanged($event)" accept="image/*" #fileInput />
+          <button class="navButtons" style="margin-left: -60px;margin-right: 40px;" (click)="fileInput.click()">
+            <span><i class="fa fa-upload" width="20px;"></i></span> Choose
+            photo
+          </button>
+
+          <button class="navButtons" style="margin-right: 40px;" (click)="fileInput.click()">
+            <span><i class="fa fa-upload" width="30px;"></i></span> Upload
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-6 col-md-6 col-xs-8">
+        <div class="row">
+          <strong>{{profileName}}</strong>
+        </div>
+        <br />
+        <div class="row">
+          <form #editDetails="ngForm" (ngSubmit)="UpdateDetails(editDetails.value)" class="form">
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="email">Email address:</label>
+              </div>
+              <div class="col-6">
+                <input type="email" class="form-control" placeholder="Enter email" name="email" ngModel />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="email">Age:</label>
+              </div>
+              <div class="col-6">
+                <input type="Country" class="form-control" placeholder="Enter Age" name="Age" ngModel />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="email">Country:</label>
+              </div>
+              <div class="col-6">
+                <input type="Country" class="form-control" placeholder="Enter country" name="Country" ngModel />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-6">
+                <label for="email">State:</label>
+              </div>
+              <div class="col-6">
+                <input type="Country" class="form-control" placeholder="Enter State" name="State" ngModel />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="OrderTab" style="display: none;">
+      <P>Orders Sections</P>
+    </div>
+  </div>
+</body>
+
 </html>
