@@ -19,7 +19,10 @@ export class MainPageComponent implements OnInit {
   TopCustomerDetails: any = [];
   displayedColumns: string[] = ['Name', 'Age', 'Country', 'TotalOrders'];
   dataSource = new MatTableDataSource(this.details);
-
+  tempNameData: any = [];
+  tempAgeData: any = [];
+  tempCountryData: any = [];
+  CountryFilter = "Country Filter"
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -29,6 +32,9 @@ export class MainPageComponent implements OnInit {
       this.details.push({ "id": i + 1, "Name": "sai marella", "Age": i, "Country": "India", "TotalOrders": "30" });
     }
     this.details.push({ "id": "51", "Name": "Sruthi Chintala", "Age": "23", "Country": "India", "TotalOrders": "90" });
+    this.tempNameData = this.details;
+    this.tempAgeData = this.details;
+    this.tempCountryData = this.details;
     for (let i = 0; i < 6; i++) {
       this.TopCustomerDetails.push({ "id": this.details[i].id, "Name": this.details[i].Name, "Age": this.details[i].Age, "Country": this.details[i].Country, "TotalOrders": this.details[i].TotalOrders })
     }
@@ -138,12 +144,52 @@ export class MainPageComponent implements OnInit {
     }
     $("#TopCustomerCards").fadeIn("slow");
   }
-  applyFilter(filterValue: string) {
+  applyNameFilter(filterValue: string) {
+    if (filterValue.length > 0) {
 
-    this.dataSource.filterPredicate = function (data: any, filter: string): boolean {
-      return data.Name.toLowerCase().includes(filter)
-    };
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+      this.tempNameData = this.details;
+      this.tempNameData = this.details.filter(e => e.Name.toLowerCase().includes(filterValue))
+      console.log(this.details);
+      this.dataSource = this.tempNameData;
+    }
+    else {
+      this.tempNameData = this.details;
+      this.dataSource = this.tempNameData;
+    }
+
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyAgeFilter(filterValue: string) {
+    if (filterValue.length > 0) {
+
+      this.tempAgeData = this.tempNameData;
+      this.tempAgeData = this.tempNameData.filter(e => e.Age.toString().toLowerCase().includes(filterValue))
+      console.log(this.tempAgeData);
+      this.dataSource = this.tempAgeData;
+    }
+    else {
+      this.tempAgeData = this.tempNameData;
+      this.dataSource = this.tempAgeData;
+    }
+  }
+
+  applyCountryFilter(filterValue: string) {
+    this.CountryFilter = filterValue;
+    if (filterValue != "none") {
+
+      this.tempCountryData = this.tempAgeData;
+      this.tempCountryData = this.tempAgeData.filter(e => e.Country.includes(filterValue))
+      console.log("hi");
+      console.log(this.tempCountryData);
+      this.dataSource = this.tempCountryData;
+    }
+    else {
+      this.tempCountryData = this.tempAgeData;
+      this.dataSource = this.tempCountryData;
+    }
+
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   chartsNavigate() {
     this.router.navigate(["/charts"]);

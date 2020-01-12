@@ -198,22 +198,34 @@
       <div class="input-group" style=" width:80%;text-align: center;">
 
         <input class="form-control" id="searchTable" style="text-align:center;"
-          (keyup)="applyFilter($event.target.value)" matInput placeholder="Search by Name">
+          (keyup)="applyNameFilter($event.target.value)" matInput placeholder="Search by Name">
         <div class="input-group-append" style="margin-right: 10px;">
           <span class="input-group-text"><i class="fa fa-search" style="width: 30px;"></i></span>
         </div>
 
         <input class="form-control" id="searchTable" style="text-align:center;"
-          (keyup)="applyFilter($event.target.value)" matInput placeholder="Search by Name">
+          (keyup)="applyAgeFilter($event.target.value)" matInput placeholder="Search by Age">
         <div class="input-group-append" style="margin-right: 10px;">
           <span class="input-group-text"><i class="fa fa-search" style="width: 30px;"></i></span>
         </div>
 
-        <input class="form-control" id="searchTable" style="text-align:center;"
-          (keyup)="applyFilter($event.target.value)" matInput placeholder="Search by Name">
+        <!-- <input class="form-control" id="searchTable" style="text-align:center;"
+          (keyup)="applyCountryFilter($event.target.value)" matInput placeholder="Search by Country">
         <div class="input-group-append" style="margin-right: 10px;">
           <span class="input-group-text"><i class="fa fa-search" style="width: 30px;"></i></span>
+        </div> -->
+
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          {{CountryFilter}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href (click)="!!applyCountryFilter('none')">None</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href (click)="!!applyCountryFilter('India')">India</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href (click)="!!applyCountryFilter('Other')">Other</a>
         </div>
+
       </div>
       <br />
       <table id="CustomerMatDataTable" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
