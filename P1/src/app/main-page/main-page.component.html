@@ -225,9 +225,11 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href (click)="!!applyCountryFilter('Other')">Other</a>
         </div>
-
       </div>
       <br />
+      <div *ngIf="Filtered" style="text-align: center;">Filtered <span style="color:blueviolet;">
+          {{tempLength}}</span> profiles out of total <span style="color: blue;">{{originalLength}}</span>
+        profiles</div>
       <table id="CustomerMatDataTable" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
         <!-- Position Column -->
