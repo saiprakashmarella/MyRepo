@@ -1,14 +1,19 @@
 package com.project.project.model;
 
+import java.io.File;
+import java.nio.file.Path;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="Customer")
@@ -25,6 +30,7 @@ public class Customer {
 	private int age;
 	@NotBlank
 	private String cust_Address;
+	private String img_path="";
 	public Long getCustId() {
 		return cust_Id;
 	}
@@ -55,6 +61,13 @@ public class Customer {
 	public void setCustAddress(String custAddress) {
 		this.cust_Address = custAddress;
 	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
+	
 	
 	
 
