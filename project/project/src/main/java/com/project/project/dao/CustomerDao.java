@@ -68,6 +68,7 @@ public class CustomerDao {
 		c.setCustAddress(cu.getCustAddress());
 		c.setCustCountry(cu.getCustCountry());
 		c.setCustomerName(cu.getCustomerName());
+		
 		logg.info("Updating the user");
 		if(this.deleteById(id).contains("Success")) {
 			this.save(c);
@@ -119,6 +120,25 @@ public class CustomerDao {
 		}catch(Exception e) {
 			logg.error("No data found"+e.toString());
 			return null;
+		}
+	}
+	public String UpdateImageOfCust(Long id, String path) {
+		try {
+			logg.info("updating image for id:"+id);
+			cr.updateImagebyId(id, path);
+			return "Success";
+		}catch(Exception e) {
+			logg.error("Error while updating the image:"+e.getMessage());
+			return e.toString();
+		}
+	}
+	public String GetImagePathByCustomerId(Long id) {
+		try {
+			logg.info("Fetching the customer image path in the system");
+			return cr.getImagePathByCustId(id);
+		}catch(Exception e) {
+			logg.error("Error while fetching the image path of the user: "+id+"-"+e.getMessage());
+			return e.toString();
 		}
 	}
 }
