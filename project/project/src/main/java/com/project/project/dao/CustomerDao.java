@@ -1,5 +1,6 @@
 package com.project.project.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,9 @@ public class CustomerDao {
 	public Customer save(Customer cu) {
 		try {
 			logg.info("Saving the details");
+			cu.setCreateddate(new Date());
+			cu.setUpdateddate(null);
+			
 		return cr.save(cu);
 		
 	}catch(Exception e) {
@@ -64,10 +68,12 @@ public class CustomerDao {
 		logg.info("got the existing details of the user:"+id);
 		
 		c.setAge(cu.getAge());
-		c.setCustId(id);
-		c.setCustAddress(cu.getCustAddress());
-		c.setCustCountry(cu.getCustCountry());
-		c.setCustomerName(cu.getCustomerName());
+		c.setCid(id);
+		c.setCaddress(cu.getCaddress());
+		c.setCcountry(cu.getCcountry());
+		c.setCname(cu.getCname());
+		c.setCreateddate(cu.getCreateddate());
+		c.setUpdateddate(new Date());
 		
 		logg.info("Updating the user");
 		if(this.deleteById(id).contains("Success")) {
@@ -122,6 +128,8 @@ public class CustomerDao {
 			return null;
 		}
 	}
+	
+	/* upload image for a customer */
 	public String UpdateImageOfCust(Long id, String path) {
 		try {
 			logg.info("updating image for id:"+id);
@@ -132,6 +140,8 @@ public class CustomerDao {
 			return e.toString();
 		}
 	}
+	
+	/* view image of a customer */
 	public String GetImagePathByCustomerId(Long id) {
 		try {
 			logg.info("Fetching the customer image path in the system");

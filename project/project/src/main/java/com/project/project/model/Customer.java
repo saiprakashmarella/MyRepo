@@ -2,6 +2,7 @@ package com.project.project.model;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -22,32 +23,53 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long cust_Id;
+	private Long cid;
 	@NotBlank
-	private String customer_Name;
+	private String cname;
 	@NotBlank
-	private String cust_Country;
+	private String ccountry;
 	private int age;
 	@NotBlank
-	private String cust_Address;
+	private String caddress;
 	private String img_path="";
-	public Long getCustId() {
-		return cust_Id;
+	private Date createddate=null;
+	private Date updateddate=null;
+	private Double phno=null;
+	public double getPhno() {
+		return phno;
 	}
-	public void setCustId(Long custId) {
-		this.cust_Id = custId;
+	public void setPhno(double phno) {
+		this.phno = phno;
 	}
-	public String getCustomerName() {
-		return customer_Name;
+	public Date getCreateddate() {
+		return createddate;
 	}
-	public void setCustomerName(String customerName) {
-		this.customer_Name = customerName;
+	public void setCreateddate(Date createddate) {
+		this.createddate = createddate;
 	}
-	public String getCustCountry() {
-		return cust_Country;
+	public Date getUpdateddate() {
+		return updateddate;
 	}
-	public void setCustCountry(String custCountry) {
-		this.cust_Country = custCountry;
+	public void setUpdateddate(Date updateddate) {
+		this.updateddate = updateddate;
+	}
+	public Long getCid() {
+		return cid;
+	}
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public String getCcountry() {
+		return ccountry;
+	}
+	public void setCcountry(String ccountry) {
+		this.ccountry = ccountry;
 	}
 	public int getAge() {
 		return age;
@@ -55,11 +77,11 @@ public class Customer {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getCustAddress() {
-		return cust_Address;
+	public String getCaddress() {
+		return caddress;
 	}
-	public void setCustAddress(String custAddress) {
-		this.cust_Address = custAddress;
+	public void setCaddress(String caddress) {
+		this.caddress = caddress;
 	}
 	public String getImg_path() {
 		return img_path;
@@ -68,7 +90,4 @@ public class Customer {
 		this.img_path = img_path;
 	}
 	
-	
-	
-
 }

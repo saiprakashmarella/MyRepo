@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ import com.project.project.model.Customer;
 
 
 import jdk.internal.org.jline.utils.Log;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -53,7 +54,7 @@ public class CustomerController {
 	
 	
 	private static final Logger logg=LogManager.getLogger(CustomerController.class.getName());
-	@GetMapping("/customer")
+	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> getCustomers(){
 		try {
 			logg.info("Getting All customer Details");
@@ -145,7 +146,7 @@ public class CustomerController {
 		try {
 			logg.info("Uploading the file");
 			byte[] bytes=file.getBytes();
-			Path path=Paths.get("src/main/resources/","1"+file.getOriginalFilename());
+			Path path=Paths.get("src/main/resources/",id.toString()+"-"+file.getOriginalFilename());
 			logg.info(path);
 			Files.write(path,bytes);
 			logg.info("Upload Successfull");
