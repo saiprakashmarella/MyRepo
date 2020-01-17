@@ -15,7 +15,7 @@
     <div class="header">
       <nav class="navbar navbar-expand-md bg-light navbar-light">
         <!-- Brand -->
-        <a class="navbar-brand" href="#"><span>
+        <a class="navbar-brand" href (click)="!!profileNavigate()"><span>
             <i class="fa fa-user"></i>
           </span></a>
 
@@ -145,11 +145,13 @@
         style="color: teal"><span><i class="fa fa-user-circle" style="width: 30px;"></i></span>Top Customers</button>
       <button id="AllCustomerButton" (click)="ShowAllCustomers()" type="button" class="navbar-brand navButtons"
         style="color: black;"><span><i class="fa fa-users " style="width: 30px;"></i></span>All Customers</button>
+      <button id="AddCustomerButton" (click)="AddCustomer()" type="button" class="navbar-brand navButtons"
+        style="color: black;"><span><i class="fa fa-user " style="width: 30px;"></i></span>Add Customer</button>
     </div>
     <br>
     <div class="row" id="TopCustomerCards" style="margin-left: 60px;">
       <div *ngFor="let det of TopCustomerDetails">
-        <div class="card col" style="width:300px;margin-left: 60px;height: 350px; margin-bottom: 20px;">
+        <div class="card col">
           <img class="card-img-top" style="width: 40%; margin-left: 60px;margin-top: 5px;"
             src="../../assets/Images/customer_male.png" alt="Card image">
           <div class="border"></div>
@@ -179,21 +181,22 @@
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div id="previousButton">
-        <div>
-          <button id="previousCustomersDetails" class="navbar-brand navButtons text-center"
-            (click)="previousCustomersDetails()"><span><i class="fa fa-caret-left"
-                style="width: 30px;"></i></span>Prev</button>
-          <p id="pageIndicator" style="margin-left: 15px;">{{pageNo+1}}</p>
-          <button id="nextCustomersDetails" class="navbar-brand navButtons text-center" (click)="nextCustomersDetails()"
-            role="button" style="margin-left: 25px;">Next<span><i class="fa fa-caret-right"
-                style="width: 30px;"></i></span></button>
-        </div>
-      </div>
+
 
     </div>
+    <div id="previousButton">
+      <div>
+        <button id="previousCustomersDetails" class="navbar-brand navButtons text-center"
+          (click)="previousCustomersDetails()"><span><i class="fa fa-caret-left"
+              style="width: 30px;"></i></span>Prev</button>
+        <p id="pageIndicator" style="margin-left: 15px;">{{pageNo+1}}</p>
+        <button id="nextCustomersDetails" class="navbar-brand navButtons text-center" (click)="nextCustomersDetails()"
+          role="button" style="margin-left: 25px;">Next<span><i class="fa fa-caret-right"
+              style="width: 30px;"></i></span></button>
+      </div>
+    </div>
+
+
     <div class="container-fluid" id="CustomerDataTable">
       <div class="input-group" style=" width:80%;text-align: center;">
 
@@ -262,7 +265,12 @@
       <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
     </div>
+    <div id="AddCustomerSection">
+      <p> Add Customer</p>
+    </div>
+
   </div>
+
 
 </body>
 

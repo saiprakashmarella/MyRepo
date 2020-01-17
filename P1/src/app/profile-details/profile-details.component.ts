@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { } from "googlemaps";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { CustomerService } from 'src/Services/CustomerService.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-profile-details",
@@ -8,11 +10,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ["./profile-details.component.css"]
 })
 export class ProfileDetailsComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private customerService: CustomerService, private snackbar: MatSnackBar) { }
   texto: string = "Wenceslau Braz - Cuidado com as cargas";
   lat: number = 17.440081;
   lng: number = 78.348915;
   zoom: number = 15;
+  tempImg: any;
+  imageName: any;
+  saveImg: any;
+  editClick: boolean = false;
   choosedProfId = 0;
   imgSrc = "../../assets/Images/customerProfilePhoto_Male.png";
   imgurl: any;
@@ -25,6 +31,7 @@ export class ProfileDetailsComponent implements OnInit {
       let id = parseInt(params.get('id'));
       this.choosedProfId = id;
     });
+    this.tempImg = this.imgSrc;
     for (let i = 0; i < 50; i++) {
       this.details.push({ "id": i + 1, "Name": "sai marella", "Age": i, "Country": "India", "TotalOrders": "30" });
     }
@@ -32,6 +39,10 @@ export class ProfileDetailsComponent implements OnInit {
     this.profileAge = this.details[this.choosedProfId - 1].Age;
     this.profileName = this.details[this.choosedProfId - 1].Name;
     this.profileCountry = this.details[this.choosedProfId - 1].Country;
+    this.jquery();
+
+  }
+  jquery() {
     $(document).ready(function () {
       $("#CustProfile").click(function () {
         $("#CustOrders").css("color", "#069");
@@ -62,7 +73,6 @@ export class ProfileDetailsComponent implements OnInit {
       });
     });
   }
-
   profileNavigate() {
     console.log(this.choosedProfId);
     this.router.navigate(["/main"]);
@@ -74,8 +84,12 @@ export class ProfileDetailsComponent implements OnInit {
     console.log("State:" + data.State);
   }
   onImgChanged(event: any) {
+
+    this.editClick = true;
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
+      this.imageName = file.name;
+      this.saveImg = file;
 
       const reader = new FileReader();
       reader.onload = (event: any) => {
@@ -83,12 +97,38 @@ export class ProfileDetailsComponent implements OnInit {
       };
 
       reader.readAsDataURL(file);
-      $(document).ready(function () {
-        $("#userEditImg").css({ width: "50%", height: "200px" });
-      });
+
     }
   }
+  saveUserImage() {
 
+
+    console.log(this.saveImg);
+    this.customerService.uploadCustomerImage(this.choosedProfId, this.saveImg).subscribe(data => {
+      this.snackbar.open("Uploading image", "Success", {
+        duration: 3000
+      })
+      this.editClick = false;
+    },
+      error => {
+        this.snackbar.open("Uploading image", "Failed", {
+          duration: 3000
+        })
+        console.log(error);
+      })
+
+  }
+  cancelImage() {
+    this.imgSrc = this.tempImg;
+    this.editClick = false;
+    $(document).ready(function () {
+      $("#userEditImg").css({ width: "100%", height: "100%" });
+
+    });
+    this.snackbar.open("cancelling Image", "success", {
+      duration: 2000
+    })
+  }
   chartsNavigate() {
     this.router.navigate(['/charts']);
   }

@@ -10,10 +10,14 @@
 </head>
 
 <body>
+
   <div class="header">
     <nav class="navbar navbar-expand-md bg-light navbar-light">
       <!-- Brand -->
-      <a class="navbar-brand" href="#"><span> <i class="fa fa-user"></i> </span></a>
+
+      <a class="navbar-brand" href (click)="!!profileNavigate()"><span>
+          <i class="fa fa-user"></i>
+        </span></a>
 
       <!-- Toggler/collapsibe Button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -116,10 +120,11 @@
     <div class="modal-dialog signup">
       <div class="modal-content">
         <div class="modal-header">
+
+          <h4 class="modal-title">SingUp</h4>
           <button type="button" class="close" data-dismiss="modal">
             &times;
           </button>
-          <h4 class="modal-title">SingUp</h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -153,7 +158,8 @@
     <br />
     <div id="CustomerProfileTab" class="row">
       <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
-        <img id="userImg" src="{{ imgSrc }}" alt="CustomerImage" width="55%" height="55%" />
+        <a href data-toggle="modal" data-target="#viewImage"><img id="userEditImg" src="{{ imgSrc }}" alt="customerPic"
+            width="300px" height="200px" style="margin-bottom: 20px;" /></a>
       </div>
       <div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
         <br />
@@ -169,24 +175,49 @@
     <agm-map id="mapLocation" [latitude]="lat" [zoom]="zoom" [longitude]="lng">
       <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
     </agm-map>
+    <div id="viewImage" class="modal fade" role="dialog">
+      <div class="modal-dialog signup">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">User_Image</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+
+          </div>
+          <div class="modal-body">
+            <img src="{{imgSrc}}" width="250px" height="250px">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <div id="EditTab" class="row container-fluid" style="display: none;">
       <div class="col-sm-6 col-md-6 col-lg-6 col-xs-4">
         <div class="row" style="margin-left: 40px;">
-          <img id="userEditImg" src="{{ imgSrc }}" alt="customerPic" width="40%" height="40%" />
+          <a href data-toggle="modal" data-target="#viewImage"><img id="userEditImg" src="{{ imgSrc }}"
+              alt="customerPic" width="400px" height="240px" /></a>
         </div>
         <div class="row">
           <br />
         </div>
-        <div class="row" style="margin-left: 100px;">
+        <div class="row" style="margin-left: 140px;">
           <input style="display: none" type="file" (change)="onImgChanged($event)" accept="image/*" #fileInput />
-          <button class="navButtons" style="margin-left: -60px;margin-right: 40px;" (click)="fileInput.click()">
+          <button class="navButtons" style="margin-left: -40px;margin-right: 40px;" (click)="fileInput.click()">
             <span><i class="fa fa-upload" width="20px;"></i></span> Choose
             photo
           </button>
 
-          <button class="navButtons" style="margin-right: 40px;" (click)="fileInput.click()">
+          <button class="navButtons" style="margin-right: 40px;" (click)="saveUserImage()">
             <span><i class="fa fa-upload" width="30px;"></i></span> Upload
+          </button>
+        </div>
+        <br />
+        <div class="row" style="margin-left: 40px;">
+          <button *ngIf="editClick" class="navButtons" style="margin-right: 40px;" (click)="cancelImage()">
+            <span><i class="fa fa-times-circle" width="30px;"></i></span> Cancel {{imageName}}
           </button>
         </div>
       </div>
