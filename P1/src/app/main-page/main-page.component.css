@@ -139,6 +139,11 @@ li:hover {
   display: none;
 }
 
+.required:after {
+  content: " *";
+  color: red;
+}
+
 @media (max-width: 1000px) {
 
   /*shows elements in a column*/
@@ -165,6 +170,14 @@ li:hover {
   }
 }
 
+#ddb {
+  border-style: dashed;
+}
+
+.datetimepicker{
+  width:100px;
+}
+
 @media(min-width:1400px) {
   .card {
     margin-left: 90px;
@@ -186,6 +199,21 @@ li:hover {
 
   .card {
     margin-left: -15px;
+  }
+
+  #userdetailsform {
+    margin-left: 40px;
+
+  }
+
+  .form-control {
+    margin-bottom: 20px;
+  }
+  #datepicker{
+    margin-bottom: 20px;
+  }
+  p-calendar{
+    width:100px;
   }
 }
 

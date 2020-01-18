@@ -1,11 +1,17 @@
-export interface ICustomer {
-    cid: Number,
-    cname: String,
-    ccountry: String,
-    age: Number,
-    caddress: String,
-    img_path: String,
-    createddate: Date,
-    updateddate: Date,
-    phno: number
+export class ICustomer {
+    constructor() {
+
+    }
+    public cid: Number;
+    public cname: String;
+    public ccountry: String;
+    public age: Number;
+    public dob: Date;
+    public caddress: String;
+    public img_path: String;
+    public createddate: Date;
+    public updateddate: Date;
+    public phno: Number;
+
+
 }

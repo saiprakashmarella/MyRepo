@@ -141,11 +141,11 @@
     </div>
     <br>
     <div class="row" style="margin-left: 40px;">
-      <button id="TopCustomerButton" (click)="ShowTopCustomers()" role="button" class="navbar-brand navButtons "
+      <button id="TopCustomerButton" (click)="ShowTopCustomers()" role="button" class="navbar-brand navButtons"
         style="color: teal"><span><i class="fa fa-user-circle" style="width: 30px;"></i></span>Top Customers</button>
       <button id="AllCustomerButton" (click)="ShowAllCustomers()" type="button" class="navbar-brand navButtons"
         style="color: black;"><span><i class="fa fa-users " style="width: 30px;"></i></span>All Customers</button>
-      <button id="AddCustomerButton" (click)="AddCustomer()" type="button" class="navbar-brand navButtons"
+      <button id="AddCustomerButton" (click)="Add_Customer()" type="button" class="navbar-brand navButtons"
         style="color: black;"><span><i class="fa fa-user " style="width: 30px;"></i></span>Add Customer</button>
     </div>
     <br>
@@ -266,12 +266,98 @@
       </mat-paginator>
     </div>
     <div id="AddCustomerSection">
-      <p> Add Customer</p>
+      <div class="container-fluid">
+        <form #userForm="ngForm" id="userdetailsform">
+
+          <div class="form-group row">
+            <div class="col-12 col-sm">
+              <label for="name" class="required">
+                Customer Name
+              </label>
+              <input type="text" required class="form-control" #name="ngModel"
+                [class.is-invalid]="name.invalid && name.touched" placeholder="Enter Name" name="Name" ngModel>
+              <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+            </div>
+            <div class="col-12 col-sm">
+              <label for="name" class="required">
+                Customer Age
+              </label>
+              <input type="text" class="form-control" (keyup)="ageValid($event.target.value)" placeholder="Enter Age"
+                id="ageField" name="Age" ngModel>
+              <small class="text-danger" id="ageInvalid">Age is Invalid</small>
+            </div>
+            <div class="col-12 col-sm">
+              <label for="name" class="required">
+                Customer Contact
+              </label>
+              <input type="text" required pattern="^[6-9]\d{9}$" #phone="ngModel"
+                [class.is-invalid]="phone.invalid && phone.touched" class="form-control" placeholder="Enter Phone"
+                name="phone" ngModel>
+              <!-- <small class="text-danger" [class.d-none]="phone.valid !! phone.touched">Not a valid number</small> -->
+              <div *ngIf="phone.errors && (phone.is-invalid || phone.touched)">
+                <small class="text-danger" *ngIf="phone.errors.required">Phone Number is required</small>
+                <small class="text-danger" *ngIf="phone.errors.pattern">Not a valid number</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-12 col-sm" style="width:100px">
+              <label class="row container">Date of Birth</label>
+
+              <p-calendar styleClass="datitimepicker" class="row container" id="datepicker" name="dateValue" ngModel
+                dateFormat="dd.mm.yy " [monthNavigator]="true" [yearNavigator]="true" [showWeek]="true"
+                yearRange="1950:2020"></p-calendar>
+            </div>
+            <div class="col-12 col-sm">
+              <label for="country" class="required">Select Country:</label>
+              <select class="form-control" id="sel1" #country="ngModel" required
+                [class.is-invalid]="country.invalid && country.touched" name="country" ngModel>
+                <option *ngFor="let c of countries">{{c}}</option>
+              </select>
+              <small class="text-danger" [class.d-none]="country.valid || country.untouched">country is required</small>
+            </div>
+            <div class="col-12 col-sm">
+              <label for="state" class="required">Select State:</label>
+              <select class="form-control" #state="ngModel" required [class.is-invalid]="state.invalid && state.touched"
+                id="sel1" name="state" ngModel>
+                <option *ngFor="let c of countries">{{c}}</option>
+              </select>
+              <small class="text-danger" [class.d-none]="state.valid || state.untouched">State is required</small>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="form-group row container">
+            <div class="form-check" style="text-align: center;">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="aknowledgement" ngModel>aknowledgement details
+              </label>
+            </div>
+          </div>
+          <div class="form-group row container">
+            <div class="form-check" style="text-align:center;">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="offers" ngModel>send promotion offers
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group row container" style="text-align: center;">
+            <div class="col">
+              <button type="submit" class="btn btn-dark" (click)="submitCustDetails(userForm)">Submit</button>
+            </div>
+            <div class="col">
+              <button type="reset" class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
     </div>
-
+    <div *ngIf="hasError">
+      Error is {{errormsg}}
+    </div>
   </div>
-
-
 </body>
 
 </html>

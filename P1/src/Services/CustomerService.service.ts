@@ -19,12 +19,15 @@ export class CustomerService {
 
     }
     getCustomerImage(): Observable<Blob> {
-        return this.http.get("http://localhost:8080/customer/getImageByCustomerID/1", { responseType: 'blob' });
+        return this.http.get("http://localhost:8080/customer/getImageByCustomerID/1", { responseType: 'blob' }).pipe(catchError(this.errorHandler));
     }
     uploadCustomerImage(id, image): Observable<string> {
         let body = new FormData();
         body.append('file', image);
         return this.http.post<string>("http://localhost:8080/customer/uploadImage/" + id.toString(), body, { responseType: 'text' as 'json' });
+    }
+    saveCustomerDetails(data): Observable<ICustomer> {
+        return this.http.post<ICustomer>("http://localhost:8080/customer/addCustomer", data).pipe(catchError(this.errorHandler));
     }
     errorHandler(error: HttpErrorResponse) {
         return Observable.throw(error.message || "server error");

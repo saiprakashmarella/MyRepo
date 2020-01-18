@@ -5,6 +5,7 @@ import { AppRoutingModule, routingComponents } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MainPageComponent } from "./main-page/main-page.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker'
 import {
   MatTableModule,
   MatSortModule,
@@ -20,6 +21,8 @@ import { ChartsComponent } from './charts/charts.component'
 import { HttpClientModule } from '@angular/common/http'
 import { CustomerService } from 'src/Services/CustomerService.service';
 import { TestComponent } from './test/test.component';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [AppComponent, MainPageComponent, ProfileDetailsComponent, routingComponents, PNFComponent, ChartsComponent, TestComponent],
   imports: [
@@ -33,6 +36,9 @@ import { TestComponent } from './test/test.component';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    AngularDateTimePickerModule,
+    CalendarModule,
+    DropdownModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCWedEqCJBj8uf8ZHzD6z8a7B3vsXwc9XI"
     })
