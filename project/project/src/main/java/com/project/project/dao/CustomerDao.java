@@ -133,7 +133,8 @@ public class CustomerDao {
 	public String UpdateImageOfCust(Long id, String path) {
 		try {
 			logg.info("updating image for id:"+id);
-			cr.updateImagebyId(id, path);
+			Date udate=new Date();
+			cr.updateImagebyId(id, path,udate);
 			return "Success";
 		}catch(Exception e) {
 			logg.error("Error while updating the image:"+e.getMessage());

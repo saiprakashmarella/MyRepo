@@ -1,5 +1,6 @@
 package com.project.project.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,8 +25,8 @@ public interface CustomerRepository extends JpaRepository<Customer,Long>{
 	List<Customer> getAllCustomers();
 	@Transactional
 	@Modifying
-	@Query(value="update Customer set img_path=?2 where cid=?1", nativeQuery=true)
-	void updateImagebyId(Long id,String path);
+	@Query(value="update Customer set img_path=?2,updateddate=?3 where cid=?1", nativeQuery=true)
+	void updateImagebyId(Long id,String path,Date udate);
 	
 	@Query(value="select img_path from Customer where cid=?1",nativeQuery=true)
 	String getImagePathByCustId(Long Id);

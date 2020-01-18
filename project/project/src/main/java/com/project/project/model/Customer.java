@@ -28,17 +28,25 @@ public class Customer {
 	private String cname;
 	@NotBlank
 	private String ccountry;
+
+	private Date dob;
 	private int age;
 	@NotBlank
 	private String caddress;
 	private String img_path="";
 	private Date createddate=null;
 	private Date updateddate=null;
-	private Double phno=null;
-	public double getPhno() {
+	private Long phno= (long) 0;
+	public Long getPhno() {
 		return phno;
 	}
-	public void setPhno(double phno) {
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+	public void setPhno(long phno) {
 		this.phno = phno;
 	}
 	public Date getCreateddate() {
